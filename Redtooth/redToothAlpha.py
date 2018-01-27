@@ -48,8 +48,9 @@ def Redtooth():
         with open("/tmp/current_time.txt", "w") as f:
             f.write("The time is now " + time.ctime())
         time.sleep(10)
-
-print(urllib.request.urlopen(getURL("Device1", 1, true)).read)
+        
+print(getURL("Device1", 1, true))
+#print(urllib.request.urlopen(getURL("Device1", 1, true)).read)
 
 
 
