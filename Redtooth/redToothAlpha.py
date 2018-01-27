@@ -6,19 +6,23 @@ import urllib.request
 import sys
 
 
-print("Flag")
-
-url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
-response = urlopen(url)
-print(response.read())
-
-print("Flag")
-
-
 def getURL(device, priority, isPlaying):
     ipAddress = "10.209.6.212"
-    url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + priority + "/" + isPlaying
+    boolean = "false"
+    if (isPlaying):
+        boolean = "true"
+    url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + str (priority) + "/" + boolean
     return url
+
+
+url = getURL("Device1", 1, True)
+response = urlopen(url).read()
+desiredMAC = response
+print(desiredMAC)
+
+
+
+
 
 def Redtooth():
     #sys.stdout.write("flag")
@@ -31,7 +35,7 @@ def Redtooth():
     #    priority = 1
     #device = mac address
     #response = urllib2.urlopen(http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying)
-    url = getURL("Device1", "1", "true")
+    url = getURL("Device1", 1, True)
     response = urlopen(url)
     targetMAC = response.read()
     print ("TARGET MAC= " + targetMAC)
