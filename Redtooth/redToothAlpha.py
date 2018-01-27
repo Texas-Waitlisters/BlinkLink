@@ -44,7 +44,12 @@ def Redtooth():
             f.write("The time is now " + time.ctime())
         time.sleep(10)
 
-print(urllib.request.urlopen('http://10.209.6.212:8080/redtooth/report/Device1/1/true').read)
+print(urllib.request.urlopen(getURL("Device1", 1, true)).read)
+
+def getURL(device, priority, isPlaying) -> str:
+    ipAddress = "10.209.6.212"
+    url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + priority + "/" + isPlaying
+    return url
 
 def run():
     with daemon.DaemonContext():
