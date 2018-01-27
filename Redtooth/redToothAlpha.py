@@ -14,6 +14,11 @@ print(response.read())
 
 html = "filler"
 
+def getURL(device, priority, isPlaying) -> str:
+    ipAddress = "10.209.6.212"
+    url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + priority + "/" + isPlaying
+    return url
+
 def Redtooth():
     #sys.stdout.write("flag")
     #print("Hello")
@@ -46,10 +51,7 @@ def Redtooth():
 
 print(urllib.request.urlopen(getURL("Device1", 1, true)).read)
 
-def getURL(device, priority, isPlaying) -> str:
-    ipAddress = "10.209.6.212"
-    url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + priority + "/" + isPlaying
-    return url
+
 
 def run():
     with daemon.DaemonContext():
