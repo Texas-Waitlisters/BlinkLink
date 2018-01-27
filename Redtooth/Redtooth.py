@@ -1,6 +1,8 @@
 #pip install python-daemon
+#test
 import os
 import time
+import bluetooth
 from daemon import runner
 
 class Redtooth():
