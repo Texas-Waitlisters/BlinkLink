@@ -6,8 +6,8 @@ import socket
 
 
 class AppServerSvc (win32serviceutil.ServiceFramework):
-    _svc_name_ = "TestService"
-    _svc_display_name_ = "Test Service"
+    _svc_name_ = "RedTooth"
+    _svc_display_name_ = "RedTooth Handoff"
 
     def __init__(self,args):
         win32serviceutil.ServiceFramework.__init__(self,args)
@@ -26,6 +26,7 @@ class AppServerSvc (win32serviceutil.ServiceFramework):
 
     def main(self):
         pass
+
 
 if __name__ == '__main__':
     win32serviceutil.HandleCommandLine(AppServerSvc)
