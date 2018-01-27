@@ -11,7 +11,7 @@
       
        <context-param>
       	     <param-name>DBNAME</param-name>
-      	     <param-value>assignment4db_chiahua</param-value>
+      	     <param-value>Redtooth</param-value>
       </context-param>
       <context-param>
       	     <param-name>DBHOST</param-name>
