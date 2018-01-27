@@ -4,6 +4,12 @@ import os
 
 
 def Redtooth():
+    '''
+    if (address == mine and volume == True):
+        os.system("blueutil on")
+    if (address != mine or volume == False):
+        os.system("bluetil off")
+    '''
     os.system("blueutil on")
     while True:
         print("Flag")
@@ -14,6 +20,7 @@ def Redtooth():
 
 def run():
     with daemon.DaemonContext():
+        #loop call below
         Redtooth()
 
 
