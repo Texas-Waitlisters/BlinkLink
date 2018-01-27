@@ -1,9 +1,36 @@
 import daemon
 import time
 import os
+from urllib.request import urlopen
+import urllib.request
+import sys
 
+url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
+response = urlopen(url)
+
+print(response.read())
+
+
+
+html = "filler"
 
 def Redtooth():
+    #sys.stdout.write("flag")
+    #print("Hello")
+    #last 3 are parameters
+    #isPlaying = true #dependent on output of sound
+    priority = 2
+    #iffy
+    #if (isPlaying):
+    #    priority = 1
+    #device = mac address
+    #response = urllib2.urlopen(http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying)
+
+    with urllib.request.urlopen('http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying') as response:
+        html = response.read()
+
+    print(response)
+
     '''
     if (address == mine and volume == True):
         os.system("blueutil on")
@@ -17,6 +44,7 @@ def Redtooth():
             f.write("The time is now " + time.ctime())
         time.sleep(10)
 
+print(urllib.request.urlopen('http://10.209.6.212:8080/redtooth/report/Device1/1/true').read)
 
 def run():
     with daemon.DaemonContext():
