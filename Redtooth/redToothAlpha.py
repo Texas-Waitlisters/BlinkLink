@@ -2,6 +2,7 @@ import daemon
 import time
 import os
 
+
 def Redtooth():
     os.system("blueutil on")
     while True:
@@ -10,9 +11,11 @@ def Redtooth():
             f.write("The time is now " + time.ctime())
         time.sleep(10)
 
+
 def run():
     with daemon.DaemonContext():
         Redtooth()
+
 
 if __name__ == "__main__":
     run()
