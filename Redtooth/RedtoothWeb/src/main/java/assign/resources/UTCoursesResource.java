@@ -66,6 +66,14 @@ public class UTCoursesResource {
 
 		return Response.ok("Response Body").build();
 	}
+	
+	@GET
+	@Path("/test/{deviceID}")
+	@Produces("text/html")
+	public Response test(@PathParam("deviceID") String deviceID) throws Exception {
+		databaseService.testDatabase(deviceID);
+		return Response.ok("Response Body").build();
+	}
 
 	@POST
 	@Path("/projects")

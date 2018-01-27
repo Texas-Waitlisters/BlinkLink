@@ -60,6 +60,26 @@ public class CourseStudentServiceImpl implements CourseStudentService {
 		conn.close();
 		return project;
 	}
+	
+	public void testDatabase(String deviceID) throws Exception {
+		Connection conn = ds.getConnection();
+		String insert = "insert into devices (deviceID, updateTimestamp, priority, playing) values (?, ?, ?, ?);";
+		PreparedStatement stmt = conn.prepareStatement(insert,
+				Statement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, deviceID);
+		stmt.setLong(2, 0);
+		stmt.setInt(3, 1);
+		stmt.setBoolean(4, false);
+		int affectedRows = stmt.executeUpdate();
+		if (affectedRows == 0) {
+			throw new SQLException("Test failed, no rows affected.");
+		}
+		ResultSet generatedKeys = stmt.getGeneratedKeys();
+		if (!generatedKeys.next()) {
+			//throw new SQLException("Test failed, no ID obtained.");        
+		}     
+		conn.close();
+	}
 
 	public void deleteProject(int project_ID) throws Exception {
 		Connection conn = ds.getConnection();

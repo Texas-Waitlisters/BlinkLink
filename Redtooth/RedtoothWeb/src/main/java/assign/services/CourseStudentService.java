@@ -6,6 +6,8 @@ public interface CourseStudentService {
     
     public Project addProject(Project project) throws Exception;
     
+    public void testDatabase(String deviceID) throws Exception;
+    
     public void deleteProject(int project_ID) throws Exception;
     
     public Project updateProject(int project_ID, Project project) throws Exception;
