@@ -5,14 +5,15 @@ from urllib.request import urlopen
 import urllib.request
 import sys
 
-print("Flag")
-'''
-url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
-response = urlopen(url)
-print(response.read())
 '''
 print("Flag")
 
+url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
+response = urlopen(url)
+print(response.read())
+
+print("Flag")
+'''
 
 def getURL(device, priority, isPlaying):
     ipAddress = "10.209.6.212"
@@ -30,6 +31,10 @@ def Redtooth():
     #    priority = 1
     #device = mac address
     #response = urllib2.urlopen(http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying)
+    url = getURL("Device1", "1", "true")
+    response = urlopen(url)
+    targetMAC = response.read()
+    print ("TARGET MAC= " + targetMAC)
 
     #with urllib.request.urlopen('http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying') as response:
     #    html = response.read()
@@ -50,7 +55,7 @@ def Redtooth():
         time.sleep(10)
 
 #url = (getURL("Device1", "1", "true"))
-print(urllib.request.urlopen(getURL("Device1", "1", "true")).read)
+#print(urllib.request.urlopen(getURL("Device1", "1", "true")).read)
 
 #url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
 #url = "hi"
@@ -67,5 +72,4 @@ def run():
 
 
 if __name__ == "__main__":
-    print("hi")
     run()
