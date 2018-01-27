@@ -5,16 +5,16 @@ from urllib.request import urlopen
 import urllib.request
 import sys
 
+print("Flag")
+'''
 url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
 response = urlopen(url)
-
 print(response.read())
+'''
+print("Flag")
 
 
-
-html = "filler"
-
-def getURL(device, priority, isPlaying) -> str:
+def getURL(device, priority, isPlaying):
     ipAddress = "10.209.6.212"
     url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + priority + "/" + isPlaying
     return url
@@ -31,10 +31,10 @@ def Redtooth():
     #device = mac address
     #response = urllib2.urlopen(http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying)
 
-    with urllib.request.urlopen('http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying') as response:
-        html = response.read()
+    #with urllib.request.urlopen('http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying') as response:
+    #    html = response.read()
 
-    print(response)
+    #print(response)
 
     '''
     if (address == mine and volume == True):
@@ -48,11 +48,17 @@ def Redtooth():
         with open("/tmp/current_time.txt", "w") as f:
             f.write("The time is now " + time.ctime())
         time.sleep(10)
-        
-print(getURL("Device1", 1, true))
-#print(urllib.request.urlopen(getURL("Device1", 1, true)).read)
 
+#url = (getURL("Device1", "1", "true"))
+print(urllib.request.urlopen(getURL("Device1", "1", "true")).read)
 
+#url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
+#url = "hi"
+#response = urlopen(url)
+
+#print(response.read())
+#print(url)
+#print("hi")
 
 def run():
     with daemon.DaemonContext():
@@ -61,4 +67,5 @@ def run():
 
 
 if __name__ == "__main__":
+    print("hi")
     run()
