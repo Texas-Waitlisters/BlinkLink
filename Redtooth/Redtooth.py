@@ -1,6 +1,8 @@
 #pip install python-daemon
+#test
 import os
 import time
+import bluetooth
 from daemon import runner
 
 class Redtooth():
@@ -10,7 +12,6 @@ class Redtooth():
         self.stderr_path = 'dev/tty/'
         self.pidfile_path = '/tmp/foo.pid'
         self.pidfile_timeout = 5
-
     def run(self):
         while True:
             print("Flag")
