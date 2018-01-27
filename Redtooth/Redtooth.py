@@ -1,4 +1,4 @@
-//pip install python-daemon
+#pip install python-daemon
 import os
 import time
 from daemon import runner
