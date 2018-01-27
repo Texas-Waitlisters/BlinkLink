@@ -2,7 +2,7 @@
 #test
 import os
 import time
-import bluetooth
+#import bluetooth
 from daemon import runner
 
 class Redtooth():
@@ -15,7 +15,8 @@ class Redtooth():
     def run(self):
         while True:
             print("Flag")
-            os.system("rfkill block bluetooth")
+            #os.system("rfkill block bluetooth")
+            os.system("blueutil on")
             time.sleep(10)
 
 app = Redtooth()
