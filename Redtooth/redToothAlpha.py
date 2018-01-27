@@ -5,7 +5,7 @@ from urllib.request import urlopen
 import urllib.request
 import sys
 
-'''
+
 print("Flag")
 
 url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
@@ -13,7 +13,7 @@ response = urlopen(url)
 print(response.read())
 
 print("Flag")
-'''
+
 
 def getURL(device, priority, isPlaying):
     ipAddress = "10.209.6.212"
