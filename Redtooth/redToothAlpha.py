@@ -1,4 +1,3 @@
-#import daemon
 import time
 import os
 import sys
@@ -7,19 +6,12 @@ import urllib.request
 import sys
 import subprocess
 from uuid import getnode as get_mac
-#from subprocess import Popen, PIPE
-
-# or: os.system("""osascript -e 'tell application "Keyboard Maestro Engine" to do script "Untitled Macro 2"'""")
-# or: os.system("""osascript -e 'tell application "Keyboard Maestro Engine" to do script "9FBCC5BD-F7D0-429A-98C1-8F9C98AFB565" with parameter "Whatever"'""")
-
 
 ipAddress =  sys.argv[1]
 mac = str(hex(get_mac()))
 print(mac)
 
 cmd = [ 'pmset', '-g']
-#cmd = [ 'pmset -g' ]
-#cmd = os.system("pmset -g")
 
 #Gets volume
 def getVolumeStatus():
@@ -29,8 +21,6 @@ def getVolumeStatus():
         volumePlaying = True
         print("Volume found")
     return volumePlaying
-
-
 
 #Creates custom URL string
 def getURL(device, isPlaying):
@@ -49,35 +39,10 @@ def pingDatabase(isPlaying):
     print(desiredMAC)
     return desiredMAC
 
-#os.system("blueutil on")
-
-
 def Redtooth():
-    #sys.stdout.write("flag")
-    #print("Hello")
-    #last 3 are parameters
-    #isPlaying = true #dependent on output of sound
     priority = 2
     connected = False
-    #iffy
-    #if (isPlaying):
-    #    priority = 1
-    #device = mac address
-    #response = urllib2.urlopen(http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying)
-    '''
-    url = getURL("Device1", True)
-    response = urlopen(url)
-    targetMAC = response.read()
-    print ("TARGET MAC= " + targetMAC)
-    '''
-    #with urllib.request.urlopen('http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying') as response:
-    #    html = response.read()
-
-    #print(response)
-
     print("Running Core")
-    #print(mac)
-    #print(desiredMac)
     while True:
         isPlaying = getVolumeStatus()
         deviceToPlay = pingDatabase(isPlaying)
@@ -85,50 +50,19 @@ def Redtooth():
             if (not connected):
                 os.system("blueutil on")
                 print("Redtooth Activated")
-                #os.system("""osascript -e 'tell application "Keyboard Maestro Engine" to do script "11606F7D-B54D-402F-8DCE-E33994D5B5C9"'""")
                 cmd2 = [ '/usr/bin/osascript',  'connect.scpt']
                 output2 = subprocess.Popen( cmd2, stdout=subprocess.PIPE ).communicate()[0]
                 print (output2)
                 expect = "Connect menu was not found, are you already connected?\n"
                 if (output2 == expect.encode("ASCII")):
                     connected = True
-            #os.system("osascript connect.scpt")
-            #time.sleep(1)
         if (not(str(mac) in str(deviceToPlay))):# or not isPlaying):
             os.system("blueutil off")
             connected = False
             print("Redtooth De-activated")
         time.sleep(1)
 
-    #os.system("blueutil on")
-    '''
-    while True:
-        print("Flag")
-        with open("/tmp/current_time.txt", "w") as f:
-            f.write("The time is now " + time.ctime())
-        time.sleep(10)
-    '''
-#url = (getURL("Device1", "1", "true"))
-#print(urllib.request.urlopen(getURL("Device1", "1", "true")).read)
-
-#url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
-#url = "hi"
-#response = urlopen(url)
-
-#print(response.read())
-#print(url)
-#print("hi")
-
-
 Redtooth()
 
-
-#Start the daemon
-#def run():
-#    with daemon.DaemonContext():
-#        Redtooth()
-
-
 if __name__ == "__main__":
-    #run()
     Redtooth()
