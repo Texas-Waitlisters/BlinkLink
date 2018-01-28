@@ -39,7 +39,7 @@ def pingDatabase(isPlaying):
     print(desiredMAC)
     return desiredMAC
 
-def pair():
+def pair(connected):
     while (not connected):
         os.system("blueutil on")
         print("Redtooth Activated")
@@ -61,7 +61,7 @@ def Redtooth():
         deviceToPlay = pingDatabase(isPlaying)
         if ((str(mac) in str(deviceToPlay)) and isPlaying):
             if (not connected):
-                connected = pair()
+                connected = pair(connected)
         if (not(str(mac) in str(deviceToPlay))):# or not isPlaying):
             os.system("blueutil off")
             connected = False
