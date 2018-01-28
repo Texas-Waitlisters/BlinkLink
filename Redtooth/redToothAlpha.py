@@ -15,13 +15,15 @@ cmd = [ 'pmset', '-g']
 #cmd = os.system("pmset -g")
 
 #Gets volume
-output = subprocess.Popen( cmd, stdout=subprocess.PIPE ).communicate()[0]
-print (output)
-print ("flag12")
-volumePlaying = False
-if ('coreaudiod' in str(output)):
-    volumePlaying = True
-    print("Volume found")
+def getVolumeStatus():
+    output = subprocess.Popen( cmd, stdout=subprocess.PIPE ).communicate()[0]
+    print (output)
+    print ("flag12")
+    volumePlaying = False
+    if ('coreaudiod' in str(output)):
+        volumePlaying = True
+        print("Volume found")
+    return volumePlaying
 
 
 
@@ -35,11 +37,12 @@ def getURL(device, isPlaying):
     return url
 
 #Ping database
-url = getURL(mac, True)
-response = urlopen(url).read()
-desiredMAC = response
-print(desiredMAC)
-
+def pingDatabase(isPlaying):
+    url = getURL(mac, isPlaying)
+    response = urlopen(url).read()
+    desiredMAC = response
+    print(desiredMAC)
+    return desiredMAC
 
 #os.system("blueutil on")
 
@@ -69,12 +72,16 @@ def Redtooth():
     print("Running Core")
     #print(mac)
     #print(desiredMac)
-    if ((str(mac) in str(desiredMAC)) and volumePlaying == True):
-        os.system("blueutil on")
-        print("Redtooth Activated")
-    if (not(str(mac) in str(desiredMAC)) or volumePlaying == False):
-        os.system("blueutil off")
-        print("Redtooth De-activated")
+    while True:
+        isPlaying = getVolumeStatus()
+        deviceToPlay = pingDatabase(isPlaying)
+        if ((str(mac) in str(deviceToPlay)) and isPlaying):
+            os.system("blueutil on")
+            print("Redtooth Activated")
+        if (not(str(mac) in str(deviceToPlay)) or not isPlaying):
+            os.system("blueutil off")
+            print("Redtooth De-activated")
+        time.sleep(1)
 
     #os.system("blueutil on")
     '''
@@ -100,9 +107,9 @@ Redtooth()
 
 
 #Start the daemon
-def run():
-    with daemon.DaemonContext():
-        Redtooth()
+#def run():
+#    with daemon.DaemonContext():
+#        Redtooth()
 
 
 if __name__ == "__main__":
