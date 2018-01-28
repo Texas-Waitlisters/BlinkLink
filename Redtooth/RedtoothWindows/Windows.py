@@ -1,33 +1,61 @@
-import win32serviceutil
-import win32service
-import win32event
-import servicemanager
-import socket
+import time
+import os
+from urllib.request import urlopen
+import subprocess
+from uuid import getnode as get_mac
 
 
-class AppServerSvc (win32serviceutil.ServiceFramework):
-    _svc_name_ = "RedTooth"
-    _svc_display_name_ = "RedTooth Handoff"
-
-    def __init__(self,args):
-        win32serviceutil.ServiceFramework.__init__(self,args)
-        self.hWaitStop = win32event.CreateEvent(None,0,0,None)
-        socket.setdefaulttimeout(60)
-
-    def SvcStop(self):
-        self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
-        win32event.SetEvent(self.hWaitStop)
-
-    def SvcDoRun(self):
-        servicemanager.LogMsg(servicemanager.EVENTLOG_INFORMATION_TYPE,
-                              servicemanager.PYS_SERVICE_STARTED,
-                              (self._svc_name_,''))
-        self.main()
-
-    def main(self):
-        #our code goes here
-        pass
+ipAddress = "10.209.6.212"
+mac = str(hex(get_mac()))
+print(mac)
 
 
-if __name__ == '__main__':
-    win32serviceutil.HandleCommandLine(AppServerSvc)
+#audio state
+def getVolumeStatus():
+    audiovalue = subprocess.Popen("ConsoleApplication1.exe", shell=False, stdout=subprocess.PIPE)
+
+    val = audiovalue.communicate()[0].strip() == b'True'
+    print(val)
+    time.sleep(.15)
+    audiovalue.kill()
+    return val
+
+
+#Creates custom URL string
+def getURL(device, isPlaying):
+    boolean = "false"
+    if isPlaying:
+        boolean = "true"
+    url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + boolean
+    print(url)
+    return url
+
+
+#Ping database
+def pingDatabase(isPlaying):
+    url = getURL(mac, isPlaying)
+    response = urlopen(url).read()
+    desiredMAC = response
+    print(desiredMAC)
+    return desiredMAC
+
+
+def Redtooth():
+    print("Running Core")
+
+    while True:
+        isPlaying = getVolumeStatus()
+        deviceToPlay = pingDatabase(isPlaying)
+
+        if (str(mac) in str(deviceToPlay)) and isPlaying:
+            #bt on and pair
+            print("Redtooth Activated")
+
+        elif not(str(mac) in str(deviceToPlay)):
+            #windows bt cmds off
+            print("Redtooth De-activated")
+        time.sleep(1)
+
+
+Redtooth()
+
