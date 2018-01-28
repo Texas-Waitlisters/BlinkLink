@@ -39,6 +39,19 @@ def pingDatabase(isPlaying):
     print(desiredMAC)
     return desiredMAC
 
+def pair():
+    while (not connected):
+        os.system("blueutil on")
+        print("Redtooth Activated")
+        cmd2 = [ '/usr/bin/osascript',  'connect.scpt']
+        output2 = subprocess.Popen( cmd2, stdout=subprocess.PIPE ).communicate()[0]
+        print (output2)
+        expect = "Connect menu was not found, are you already connected?\n"
+        if (output2 == expect.encode("ASCII")):
+            return True
+        time.sleep(1)
+
+
 def Redtooth():
     priority = 2
     connected = False
@@ -48,14 +61,7 @@ def Redtooth():
         deviceToPlay = pingDatabase(isPlaying)
         if ((str(mac) in str(deviceToPlay)) and isPlaying):
             if (not connected):
-                os.system("blueutil on")
-                print("Redtooth Activated")
-                cmd2 = [ '/usr/bin/osascript',  'connect.scpt']
-                output2 = subprocess.Popen( cmd2, stdout=subprocess.PIPE ).communicate()[0]
-                print (output2)
-                expect = "Connect menu was not found, are you already connected?\n"
-                if (output2 == expect.encode("ASCII")):
-                    connected = True
+                connected = pair()
         if (not(str(mac) in str(deviceToPlay))):# or not isPlaying):
             os.system("blueutil off")
             connected = False
