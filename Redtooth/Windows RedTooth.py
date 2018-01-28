@@ -25,6 +25,7 @@ class AppServerSvc (win32serviceutil.ServiceFramework):
         self.main()
 
     def main(self):
+        #our code goes here
         pass
 
 
