@@ -24,8 +24,6 @@ cmd = [ 'pmset', '-g']
 #Gets volume
 def getVolumeStatus():
     output = subprocess.Popen( cmd, stdout=subprocess.PIPE ).communicate()[0]
-    print (output)
-    print ("flag12")
     volumePlaying = False
     if ('coreaudiod' in str(output)):
         volumePlaying = True
@@ -60,6 +58,7 @@ def Redtooth():
     #last 3 are parameters
     #isPlaying = true #dependent on output of sound
     priority = 2
+    connected = False
     #iffy
     #if (isPlaying):
     #    priority = 1
@@ -86,10 +85,17 @@ def Redtooth():
             os.system("blueutil on")
             print("Redtooth Activated")
             #os.system("""osascript -e 'tell application "Keyboard Maestro Engine" to do script "11606F7D-B54D-402F-8DCE-E33994D5B5C9"'""")
-            os.system("osascript connect.scpt")
+            cmd2 = [ '/usr/bin/osascript',  'connect.scpt']
+            output2 = subprocess.Popen( cmd2, stdout=subprocess.PIPE ).communicate()[0]
+            print (output2)
+            expect = "Connect menu was not found, are you already connected?\n"
+            if (output2 == expect.encode("ASCII")):
+                connected = True
+            #os.system("osascript connect.scpt")
             #time.sleep(1)
         if (not(str(mac) in str(deviceToPlay))):# or not isPlaying):
             os.system("blueutil off")
+            connected = False
             print("Redtooth De-activated")
         time.sleep(1)
 
