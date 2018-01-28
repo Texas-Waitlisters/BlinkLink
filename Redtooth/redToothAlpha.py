@@ -8,6 +8,10 @@ import sys
 import subprocess
 from uuid import getnode as get_mac
 
+# or: os.system("""osascript -e 'tell application "Keyboard Maestro Engine" to do script "Untitled Macro 2"'""")
+# or: os.system("""osascript -e 'tell application "Keyboard Maestro Engine" to do script "9FBCC5BD-F7D0-429A-98C1-8F9C98AFB565" with parameter "Whatever"'""")
+
+
 ipAddress =  sys.argv[1]
 mac = str(hex(get_mac()))
 print(mac)
@@ -80,7 +84,9 @@ def Redtooth():
         if ((str(mac) in str(deviceToPlay)) and isPlaying):
             os.system("blueutil on")
             print("Redtooth Activated")
-        if (not(str(mac) in str(deviceToPlay))):# or not isPlaying):
+            os.system("""osascript -e 'tell application "Keyboard Maestro Engine" to do script "11606F7D-B54D-402F-8DCE-E33994D5B5C9"'""")
+            time.sleep(1)
+        if (not(str(mac) in str(deviceToPlay)) or not isPlaying):
             os.system("blueutil off")
             print("Redtooth De-activated")
         time.sleep(1)
