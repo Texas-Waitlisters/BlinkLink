@@ -32,6 +32,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import assign.domain.Device;
 import assign.services.DeviceDBService;
 import assign.services.DeviceDBServiceImpl;
 
@@ -68,11 +69,11 @@ public class RedtoothResource {
 	}
 	
 	@GET
-	@Path("/report/{deviceID}/{priority}/{status}")
+	@Path("/report/{deviceID}/{status}")
 	@Produces("text/html")
-	public String report(@PathParam("deviceID") String deviceID, @PathParam("priority") String priorityString, @PathParam("status") String statusString) throws SQLException {
+	public String report(@PathParam("deviceID") String deviceID, @PathParam("status") String statusString) throws SQLException {
 		try {
-			int priority = Integer.parseInt(priorityString);
+			int priority = 0;
 			boolean status = statusString.toLowerCase().equals("true");
 			try {
 				boolean deviceIsInDatabase = this.databaseService.hasDevice(deviceID);
@@ -80,7 +81,11 @@ public class RedtoothResource {
 					this.databaseService.addDevice(deviceID, priority, status);
 				}
 				else {
-					this.databaseService.updateDevice(deviceID, priority, status);
+					Device currentDevice = this.databaseService.getDevice(deviceID);
+					if (currentDevice.getStatus()!=status || currentDevice.getPriority() != priority) {
+						this.databaseService.updateDevice(deviceID, priority, status);
+						System.out.println("Updating");
+					}
 				}
 			}
 			catch (Exception e) {

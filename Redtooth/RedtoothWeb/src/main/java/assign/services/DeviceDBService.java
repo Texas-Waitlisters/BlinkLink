@@ -2,6 +2,8 @@ package assign.services;
 
 import java.sql.SQLException;
 
+import assign.domain.Device;
+
 public interface DeviceDBService {
     
     public void testDatabase(String deviceID) throws Exception;
@@ -13,6 +15,9 @@ public interface DeviceDBService {
     public void updateDevice(String deviceID, int priority, boolean status) throws Exception;
     
     public String makeDecision() throws SQLException;
+    
+    public Device getDevice(String deviceID) throws SQLException;
+
 
     
 }

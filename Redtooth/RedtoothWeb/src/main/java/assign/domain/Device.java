@@ -6,7 +6,7 @@ public class Device implements Comparable<Device> {
 	private Long timestamp;
 	private boolean status;
 	
-	public Device(String deviceID, long timestamp, int priority, boolean status) {
+	public Device(String deviceID, Long timestamp, int priority, boolean status) {
 		this.deviceID = deviceID;
 		this.priority = priority;
 		this.timestamp = timestamp;
@@ -31,7 +31,7 @@ public class Device implements Comparable<Device> {
 
 	@Override
 	public int compareTo(Device o) {
-		return this.priority - o.getPriority();
+		return Integer.valueOf((int) (this.timestamp - o.getTimestamp()));
 	}
 	
 }

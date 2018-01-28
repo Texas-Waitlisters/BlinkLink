@@ -96,6 +96,7 @@ public class DeviceDBServiceImpl implements DeviceDBService {
     
     public void updateDevice(String deviceID, int priority, boolean status) throws Exception {
     		Connection conn = ds.getConnection();
+    		
     		String update = "UPDATE devices SET updateTimestamp = ?, priority = ?, playing = ? WHERE deviceID = ?";
 		PreparedStatement stmt = conn.prepareStatement(update,
 				Statement.RETURN_GENERATED_KEYS);
@@ -127,6 +128,19 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 			return "";
 		return devices.get(0).getID();
     }
+    
+    public Device getDevice(String deviceID) throws SQLException {
+		String query = "select * from devices where deviceID=?";
+		Connection conn = ds.getConnection();
+		PreparedStatement s = conn.prepareStatement(query);
+		s.setString(1, deviceID);
+		ResultSet r = s.executeQuery();		
+		if (!r.next()) {
+			throw new SQLException();
+		}
+		Device d = new Device(r.getString(1), r.getLong(2), r.getInt(3), r.getBoolean(4));
+		return d;
+	}
 
 	
 	public boolean checkEmpty(String string) {
