@@ -5,6 +5,10 @@ from urllib.request import urlopen
 import urllib.request
 import sys
 import subprocess
+from uuid import getnode as get_mac
+
+mac = str(hex(get_mac()))
+print(mac)
 
 cmd = [ 'pmset', '-g']
 #cmd = [ 'pmset -g' ]
@@ -25,7 +29,7 @@ def getURL(device, isPlaying):
     return url
 
 
-url = getURL("Device1", True)
+url = getURL(mac, True)
 response = urlopen(url).read()
 desiredMAC = response
 print(desiredMAC)
