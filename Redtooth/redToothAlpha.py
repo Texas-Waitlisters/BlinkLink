@@ -14,12 +14,17 @@ cmd = [ 'pmset', '-g']
 #cmd = [ 'pmset -g' ]
 #cmd = os.system("pmset -g")
 
+#Gets volume
 output = subprocess.Popen( cmd, stdout=subprocess.PIPE ).communicate()[0]
 print (output)
 print ("flag12")
-#arg1 arg2
+volumePlaying = False
+if ('coreaudiod' in str(output)):
+    volumePlaying = True
 
 
+
+#Creates custom URL string
 def getURL(device, isPlaying):
     ipAddress = "10.209.6.212"
     boolean = "false"
@@ -28,14 +33,14 @@ def getURL(device, isPlaying):
     url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + boolean
     return url
 
-
+#Ping database
 url = getURL(mac, True)
 response = urlopen(url).read()
 desiredMAC = response
 print(desiredMAC)
 
 
-
+#os.system("blueutil on")
 
 
 def Redtooth():
@@ -49,29 +54,33 @@ def Redtooth():
     #    priority = 1
     #device = mac address
     #response = urllib2.urlopen(http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying)
-    url = getURL("Device1", 1, True)
+    '''
+    url = getURL("Device1", True)
     response = urlopen(url)
     targetMAC = response.read()
     print ("TARGET MAC= " + targetMAC)
-
+    '''
     #with urllib.request.urlopen('http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying') as response:
     #    html = response.read()
 
     #print(response)
 
-    '''
-    if (address == mine and volume == True):
+    print("Running Core")
+    if (mac == desiredMAC and volumePlaying == True):
         os.system("blueutil on")
-    if (address != mine or volume == False):
-        os.system("bluetil off")
+        print("Redtooth Activated")
+    if (mac != desiredMAC or volumePlaying == False):
+        os.system("blueutil off")
+        print("Redtooth De-activated")
+
+    #os.system("blueutil on")
     '''
-    os.system("blueutil on")
     while True:
         print("Flag")
         with open("/tmp/current_time.txt", "w") as f:
             f.write("The time is now " + time.ctime())
         time.sleep(10)
-
+    '''
 #url = (getURL("Device1", "1", "true"))
 #print(urllib.request.urlopen(getURL("Device1", "1", "true")).read)
 
@@ -83,11 +92,16 @@ def Redtooth():
 #print(url)
 #print("hi")
 
+
+Redtooth()
+
+
+#Start the daemon
 def run():
     with daemon.DaemonContext():
-        #loop call below
         Redtooth()
 
 
 if __name__ == "__main__":
     run()
+    Redtooth()
