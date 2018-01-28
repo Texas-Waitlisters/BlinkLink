@@ -106,10 +106,10 @@ public class RedtoothResource {
 	public String printAnalytics() throws SQLException {
 		ArrayList<Device> devices = this.databaseService.analytics();
 		StringBuilder resultSB = new StringBuilder("<!DOCTYPE html>\n" + 
-				"<html>\n" + 
+				"<html style='padding:2%;'>\n" + 
 				"<head>\n" + 
 				"	<meta http-equiv=\"refresh\" content=\"1\">"
-				+ "</head><body>"
+				+ "</head><body><h1>Redtooth Analytics</h1>"
 				+ "<table><tr><th style='padding:0px 5px'>Device MAC Address</th><th style='padding:0px 5px'>Timestamp of Change</th><th style='padding:0px 5px'>Status</th></tr>");
 		for (Device d : devices) {
 			resultSB.append("<tr><td style='padding:0px 5px'>");
@@ -120,7 +120,7 @@ public class RedtoothResource {
 			resultSB.append(d.getStatus());
 			resultSB.append("</td></tr>");
 		}
-		resultSB.append("</table><br>");
+		resultSB.append("</table><br>Chosen: ");
 		resultSB.append(this.databaseService.makeDecision());
 		resultSB.append("</body></html>");
 		return resultSB.toString();
