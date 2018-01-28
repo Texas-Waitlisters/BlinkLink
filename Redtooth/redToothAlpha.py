@@ -1,12 +1,14 @@
 #import daemon
 import time
 import os
+import sys
 from urllib.request import urlopen
 import urllib.request
 import sys
 import subprocess
 from uuid import getnode as get_mac
 
+ipAddress =  sys.argv[1]
 mac = str(hex(get_mac()))
 print(mac)
 
@@ -29,11 +31,11 @@ def getVolumeStatus():
 
 #Creates custom URL string
 def getURL(device, isPlaying):
-    ipAddress = "10.209.6.212"
     boolean = "false"
     if (isPlaying):
         boolean = "true"
     url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + boolean
+    print(url)
     return url
 
 #Ping database
