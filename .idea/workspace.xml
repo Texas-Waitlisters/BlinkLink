@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69184ecf-b763-41cc-9b55-640b342b4853" name="Default" comment="CSCore consolidation">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Team2/Waitlisters TAMU" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Redtooth/AppleScriptWrapper.scpt" afterPath="$PROJECT_DIR$/Redtooth/RedtoothmacOS/AppleScriptWrapper.scpt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Redtooth/redToothAlpha.py" afterPath="$PROJECT_DIR$/Redtooth/RedtoothmacOS/redToothAlpha.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,20 +18,7 @@
     <SUITE FILE_PATH="coverage/tamuhack$redToothAlpha.coverage" NAME="AudioCheck Coverage Results" MODIFIED="1517101288490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Redtooth" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Windows.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Redtooth/RedtoothWindows/Windows.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -122,6 +110,12 @@
               <item name="tamuhack" type="b2602c69:ProjectViewProjectNode" />
               <item name="tamuhack" type="462c0819:PsiDirectoryNode" />
               <item name="Redtooth" type="462c0819:PsiDirectoryNode" />
+              <item name="RedtoothmacOS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tamuhack" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tamuhack" type="462c0819:PsiDirectoryNode" />
+              <item name="Redtooth" type="462c0819:PsiDirectoryNode" />
               <item name="RedtoothWindows" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -150,11 +144,11 @@
       <recent name="C:\Users\hydraskull\Documents\GitHub\tamuhack" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hydraskull\Documents\GitHub\tamuhack\Redtooth\RedtoothmacOS" />
       <recent name="C:\Users\hydraskull\Documents\GitHub\tamuhack\Redtooth\RedtoothWindows\Debug" />
       <recent name="C:\Users\hydraskull\Documents\GitHub\tamuhack\Redtooth\RedtoothWindows" />
       <recent name="C:\Users\hydraskull\Documents\GitHub\tamuhack\Redtooth\RedtoothWindows\CScore" />
       <recent name="C:\Users\hydraskull\Documents\GitHub\tamuhack\Redtooth\CScore" />
-      <recent name="C:\Users\hydraskull\Documents\GitHub\tamuhack\Redtooth" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -288,7 +282,7 @@
       <workItem from="1517081103793" duration="255000" />
       <workItem from="1517082107544" duration="5210000" />
       <workItem from="1517087918832" duration="13500000" />
-      <workItem from="1517108493801" duration="27589000" />
+      <workItem from="1517108493801" duration="28687000" />
     </task>
     <task id="LOCAL-00001" summary="IntelliJ Test">
       <created>1517082801640</created>
@@ -420,7 +414,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46601000" />
+    <option name="totallyTimeSpent" value="47699000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -525,7 +519,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Redtooth/redToothAlpha.py">
+    <entry file="file://$PROJECT_DIR$/Redtooth/RedtoothmacOS/redToothAlpha.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2575">
           <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
@@ -613,12 +607,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Redtooth/redToothAlpha.py">
+    <entry file="file://$PROJECT_DIR$/Redtooth/RedtoothmacOS/redToothAlpha.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1100">
           <caret line="36" column="25" lean-forward="false" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="25" />
           <folding>
-            <element signature="e#15#26#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="false" />
           </folding>
         </state>
       </provider>
