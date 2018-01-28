@@ -82,15 +82,16 @@ def Redtooth():
         isPlaying = getVolumeStatus()
         deviceToPlay = pingDatabase(isPlaying)
         if ((str(mac) in str(deviceToPlay)) and isPlaying):
-            os.system("blueutil on")
-            print("Redtooth Activated")
-            #os.system("""osascript -e 'tell application "Keyboard Maestro Engine" to do script "11606F7D-B54D-402F-8DCE-E33994D5B5C9"'""")
-            cmd2 = [ '/usr/bin/osascript',  'connect.scpt']
-            output2 = subprocess.Popen( cmd2, stdout=subprocess.PIPE ).communicate()[0]
-            print (output2)
-            expect = "Connect menu was not found, are you already connected?\n"
-            if (output2 == expect.encode("ASCII")):
-                connected = True
+            if (not connected):
+                os.system("blueutil on")
+                print("Redtooth Activated")
+                #os.system("""osascript -e 'tell application "Keyboard Maestro Engine" to do script "11606F7D-B54D-402F-8DCE-E33994D5B5C9"'""")
+                cmd2 = [ '/usr/bin/osascript',  'connect.scpt']
+                output2 = subprocess.Popen( cmd2, stdout=subprocess.PIPE ).communicate()[0]
+                print (output2)
+                expect = "Connect menu was not found, are you already connected?\n"
+                if (output2 == expect.encode("ASCII")):
+                    connected = True
             #os.system("osascript connect.scpt")
             #time.sleep(1)
         if (not(str(mac) in str(deviceToPlay))):# or not isPlaying):

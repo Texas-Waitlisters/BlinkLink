@@ -108,7 +108,7 @@ public class RedtoothResource {
 		StringBuilder resultSB = new StringBuilder("<!DOCTYPE html>\n" + 
 				"<html style='padding:2%;'>\n" + 
 				"<head>\n" + 
-				"	<meta http-equiv=\"refresh\" content=\"1\">"
+				"	<meta http-equiv=\"refresh\" content=\"3\">"
 				+ "</head><body><h1>Redtooth Analytics</h1>"
 				+ "<table><tr><th style='padding:0px 5px'>Device MAC Address</th><th style='padding:0px 5px'>Timestamp of Change</th><th style='padding:0px 5px'>Status</th></tr>");
 		for (Device d : devices) {
