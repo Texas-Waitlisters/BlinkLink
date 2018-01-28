@@ -5,19 +5,24 @@ from urllib.request import urlopen
 import urllib.request
 import sys
 
-url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
-response = urlopen(url)
 
-print(response.read())
-
-
-
-html = "filler"
-
-def getURL(device, priority, isPlaying) -> str:
+def getURL(device, priority, isPlaying):
     ipAddress = "10.209.6.212"
-    url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + priority + "/" + isPlaying
+    boolean = "false"
+    if (isPlaying):
+        boolean = "true"
+    url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + str (priority) + "/" + boolean
     return url
+
+
+url = getURL("Device1", 1, True)
+response = urlopen(url).read()
+desiredMAC = response
+print(desiredMAC)
+
+
+
+
 
 def Redtooth():
     #sys.stdout.write("flag")
@@ -30,11 +35,15 @@ def Redtooth():
     #    priority = 1
     #device = mac address
     #response = urllib2.urlopen(http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying)
+    url = getURL("Device1", 1, True)
+    response = urlopen(url)
+    targetMAC = response.read()
+    print ("TARGET MAC= " + targetMAC)
 
-    with urllib.request.urlopen('http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying') as response:
-        html = response.read()
+    #with urllib.request.urlopen('http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying') as response:
+    #    html = response.read()
 
-    print(response)
+    #print(response)
 
     '''
     if (address == mine and volume == True):
@@ -49,9 +58,16 @@ def Redtooth():
             f.write("The time is now " + time.ctime())
         time.sleep(10)
 
-print(urllib.request.urlopen(getURL("Device1", 1, true)).read)
+#url = (getURL("Device1", "1", "true"))
+#print(urllib.request.urlopen(getURL("Device1", "1", "true")).read)
 
+#url = 'http://10.209.6.212:8080/redtooth/report/Device1/1/true'
+#url = "hi"
+#response = urlopen(url)
 
+#print(response.read())
+#print(url)
+#print("hi")
 
 def run():
     with daemon.DaemonContext():
