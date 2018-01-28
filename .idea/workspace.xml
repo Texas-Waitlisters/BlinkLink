@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69184ecf-b763-41cc-9b55-640b342b4853" name="Default" comment="CSCore consolidation">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/CScore/ConsoleApplication1.exe" afterPath="$PROJECT_DIR$/Redtooth/RedtoothWindows/CScore/ConsoleApplication1.exe" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/Debug/CSCore.dll" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/Debug/CSCore.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/Debug/ClassLibrary1.dll" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/Debug/ClassLibrary1.pdb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/AudioLevelWrapper.py" afterPath="$PROJECT_DIR$/Redtooth/RedtoothWindows/AudioLevelWrapper.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,9 +37,9 @@
         <entry file="file://$PROJECT_DIR$/Redtooth/redToothAlpha.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2450">
-              <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+              <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding>
-                <marker date="1517118317968" expanded="true" signature="2800:2820" ph="..." />
+                <marker date="1517122403226" expanded="true" signature="3239:3259" ph="..." />
               </folding>
             </state>
           </provider>
@@ -58,8 +60,8 @@
       <file leaf-file-name="AudioLevelWrapper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Redtooth/RedtoothWindows/AudioLevelWrapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+            <state relative-caret-position="225">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -313,7 +315,7 @@
       <workItem from="1517081103793" duration="255000" />
       <workItem from="1517082107544" duration="5210000" />
       <workItem from="1517087918832" duration="13500000" />
-      <workItem from="1517108493801" duration="12071000" />
+      <workItem from="1517108493801" duration="12198000" />
     </task>
     <task id="LOCAL-00001" summary="IntelliJ Test">
       <created>1517082801640</created>
@@ -438,7 +440,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31083000" />
+    <option name="totallyTimeSpent" value="31210000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -461,11 +463,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18421052" sideWeight="0.50426894" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18421052" sideWeight="0.49573106" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18421052" sideWeight="0.49573106" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28121665" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28121665" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -548,7 +550,7 @@
         <state relative-caret-position="2575">
           <caret line="103" column="0" lean-forward="false" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding>
-            <marker date="1517118317968" expanded="true" signature="2800:2820" ph="..." />
+            <marker date="1517122403226" expanded="true" signature="3239:3259" ph="..." />
           </folding>
         </state>
       </provider>
@@ -621,9 +623,9 @@
     <entry file="file://$PROJECT_DIR$/Redtooth/redToothAlpha.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2450">
-          <caret line="105" column="0" lean-forward="false" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+          <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
           <folding>
-            <marker date="1517118317968" expanded="true" signature="2800:2820" ph="..." />
+            <marker date="1517122403226" expanded="true" signature="3239:3259" ph="..." />
           </folding>
         </state>
       </provider>
@@ -657,8 +659,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Redtooth/RedtoothWindows/AudioLevelWrapper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        <state relative-caret-position="225">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
           </folding>
