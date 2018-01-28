@@ -1,4 +1,4 @@
-import daemon
+#import daemon
 import time
 import os
 from urllib.request import urlopen
@@ -113,5 +113,5 @@ Redtooth()
 
 
 if __name__ == "__main__":
-    run()
+    #run()
     Redtooth()
