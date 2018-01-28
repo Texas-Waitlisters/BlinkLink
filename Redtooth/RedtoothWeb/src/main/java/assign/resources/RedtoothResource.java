@@ -99,5 +99,29 @@ public class RedtoothResource {
 		System.out.println(result);
 		return result;
 	}
+	
+	@GET
+	@Path("analytics")
+	@Produces("text/html")
+	public String printAnalytics() throws SQLException {
+		ArrayList<Device> devices = this.databaseService.analytics();
+		StringBuilder resultSB = new StringBuilder("<!DOCTYPE html>\n" + 
+				"<html>\n" + 
+				"<head>\n" + 
+				"	<meta http-equiv=\"refresh\" content=\"0.5\">"
+				+ "</head><body>"
+				+ "<table><tr><th style='padding:0px 5px'>Device MAC Address</th><th style='padding:0px 5px'>Timestamp of Change</th><th style='padding:0px 5px'>Status</th></tr>");
+		for (Device d : devices) {
+			resultSB.append("<tr><td style='padding:0px 5px'>");
+			resultSB.append(d.getID());
+			resultSB.append("</td><td style='padding:0px 5px'>");
+			resultSB.append(d.getTimestamp());
+			resultSB.append("</td ><td style='padding:0px 5px'>");
+			resultSB.append(d.getStatus());
+			resultSB.append("</td></tr>");
+		}
+		resultSB.append("</table></body></html>");
+		return resultSB.toString();
+	}
 
 }

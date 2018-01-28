@@ -1,6 +1,7 @@
 package assign.services;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import assign.domain.Device;
 
@@ -17,6 +18,8 @@ public interface DeviceDBService {
     public String makeDecision() throws SQLException;
     
     public Device getDevice(String deviceID) throws SQLException;
+    
+    public ArrayList<Device> analytics() throws SQLException;
 
 
     

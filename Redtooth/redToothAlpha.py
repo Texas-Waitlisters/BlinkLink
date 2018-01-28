@@ -80,7 +80,7 @@ def Redtooth():
         if ((str(mac) in str(deviceToPlay)) and isPlaying):
             os.system("blueutil on")
             print("Redtooth Activated")
-        if (not(str(mac) in str(deviceToPlay)) or not isPlaying):
+        if (not(str(mac) in str(deviceToPlay))):# or not isPlaying):
             os.system("blueutil off")
             print("Redtooth De-activated")
         time.sleep(1)

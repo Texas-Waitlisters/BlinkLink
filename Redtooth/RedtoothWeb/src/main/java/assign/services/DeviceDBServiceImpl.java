@@ -124,8 +124,11 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 			devices.add(new Device(r.getString(1), r.getLong(2), r.getInt(3), r.getBoolean(4)));
 		}
 		Collections.sort(devices);
-		if (devices.size() == 0)
-			return "";
+		if (devices.size() == 0) {
+			devices = analytics();
+			Collections.sort(devices);
+			return devices.get(devices.size()-1).getID();
+		}
 		return devices.get(0).getID();
     }
     
@@ -152,5 +155,18 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 			}
 		}
 		return true;
+	}
+	
+	public ArrayList<Device> analytics() throws SQLException {
+		String query = "select * from devices where priority=?";
+		Connection conn = ds.getConnection();
+		PreparedStatement s = conn.prepareStatement(query);
+		s.setInt(1, 0);
+		ResultSet r = s.executeQuery();		
+		ArrayList<Device> devices = new ArrayList<Device>();
+		while (r.next()) {
+			devices.add(new Device(r.getString(1), r.getLong(2), r.getInt(3), r.getBoolean(4)));
+		}
+		return devices;
 	}
 }
