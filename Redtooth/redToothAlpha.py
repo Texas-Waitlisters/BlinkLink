@@ -4,18 +4,28 @@ import os
 from urllib.request import urlopen
 import urllib.request
 import sys
+import subprocess
+
+cmd = [ 'pmset', '-g']
+#cmd = [ 'pmset -g' ]
+#cmd = os.system("pmset -g")
+
+output = subprocess.Popen( cmd, stdout=subprocess.PIPE ).communicate()[0]
+print (output)
+print ("flag12")
+#arg1 arg2
 
 
-def getURL(device, priority, isPlaying):
+def getURL(device, isPlaying):
     ipAddress = "10.209.6.212"
     boolean = "false"
     if (isPlaying):
         boolean = "true"
-    url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + str (priority) + "/" + boolean
+    url = "http://" + ipAddress + ":8080/redtooth/report/" + device + "/" + boolean
     return url
 
 
-url = getURL("Device1", 1, True)
+url = getURL("Device1", True)
 response = urlopen(url).read()
 desiredMAC = response
 print(desiredMAC)
