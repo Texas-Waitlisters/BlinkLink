@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69184ecf-b763-41cc-9b55-640b342b4853" name="Default" comment="CSCore consolidation">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/AudioCheck.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/CSCore/ConsoleApplication1.exe.config" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/CSCore/ConsoleApplication1.vshost.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/CScore/CSCore.dll" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/CScore/CSCore.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/CScore/ClassLibrary1.dll" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Redtooth/RedtoothWindows/CScore/ClassLibrary1.pdb" afterPath="" />
-    </list>
+    <list default="true" id="69184ecf-b763-41cc-9b55-640b342b4853" name="Default" comment="CSCore consolidation" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -307,7 +299,7 @@
       <workItem from="1517081103793" duration="255000" />
       <workItem from="1517082107544" duration="5210000" />
       <workItem from="1517087918832" duration="13500000" />
-      <workItem from="1517108493801" duration="17000" />
+      <workItem from="1517108493801" duration="209000" />
     </task>
     <task id="LOCAL-00001" summary="IntelliJ Test">
       <created>1517082801640</created>
@@ -432,7 +424,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19029000" />
+    <option name="totallyTimeSpent" value="19221000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
