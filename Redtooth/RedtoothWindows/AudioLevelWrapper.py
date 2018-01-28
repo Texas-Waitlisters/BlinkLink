@@ -2,7 +2,8 @@ import ctypes
 
 
 def checkaudio():
-    audiovalue = ctypes.DLL('Redtooth\CScore\CSCore.dll')
+    audiovaluedll = ctypes.CDLL('Redtooth\RedtoothWindows\CScore\CSCore.dll')
+
     print(audiovalue)
     #return audiovalue
 
