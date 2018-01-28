@@ -21,6 +21,7 @@ print ("flag12")
 volumePlaying = False
 if ('coreaudiod' in str(output)):
     volumePlaying = True
+    print("Volume found")
 
 
 
@@ -66,10 +67,12 @@ def Redtooth():
     #print(response)
 
     print("Running Core")
-    if (mac == desiredMAC and volumePlaying == True):
+    #print(mac)
+    #print(desiredMac)
+    if ((str(mac) in str(desiredMAC)) and volumePlaying == True):
         os.system("blueutil on")
         print("Redtooth Activated")
-    if (mac != desiredMAC or volumePlaying == False):
+    if (not(str(mac) in str(desiredMAC)) or volumePlaying == False):
         os.system("blueutil off")
         print("Redtooth De-activated")
 
