@@ -1,3 +1,11 @@
 import ctypes
 
-audioCheck = cytypes.dll
+
+def checkaudio():
+    audiovalue = ctypes.DLL('Redtooth\CScore\CSCore.dll')
+    print(audiovalue)
+    #return audiovalue
+
+
+print("hi")
+
