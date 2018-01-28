@@ -49,7 +49,7 @@ def Redtooth():
     #    priority = 1
     #device = mac address
     #response = urllib2.urlopen(http://10.209.6.212:8080/redtooth/report/Device1/1/isPlaying)
-    url = getURL("Device1", 1, True)
+    url = getURL("Device1", True)
     response = urlopen(url)
     targetMAC = response.read()
     print ("TARGET MAC= " + targetMAC)
