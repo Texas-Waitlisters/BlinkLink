@@ -40,7 +40,7 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 		return ds;
 	}
 
-	
+
 	public void testDatabase(String deviceID) throws Exception {
 		Connection conn = ds.getConnection();
 		String insert = "insert into devices (deviceID, updateTimestamp, priority, playing) values (?, ?, ?, ?);";
@@ -52,6 +52,7 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 		stmt.setBoolean(4, false);
 		int affectedRows = stmt.executeUpdate();
 		if (affectedRows == 0) {
+			conn.close();
 			throw new SQLException("Test failed, no rows affected.");
 		}
 		ResultSet generatedKeys = stmt.getGeneratedKeys();
@@ -60,24 +61,35 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 		}     
 		conn.close();
 	}
-	
-    public boolean hasDevice(String deviceID) throws Exception {
-    		String query = "select * from devices where deviceID=?";
+
+	public boolean hasDevice(String deviceID) throws Exception {
+		String query = "select * from devices where deviceID=?";
 		Connection conn = ds.getConnection();
 		PreparedStatement s = conn.prepareStatement(query);
 		s.setString(1, String.valueOf(deviceID));
 		ResultSet r = s.executeQuery();
 		if (!r.next()) {
+			conn.close();
 			return false;
 		}
+		conn.close();
 		return true;
-    }
-    
-    public void addDevice(String deviceID, int priority, boolean status) throws Exception {
-    		if (checkEmpty(deviceID)) {
+	}
+
+	public void clearAll() throws Exception {
+		Connection conn = ds.getConnection();
+		String delete = "DELETE FROM devices";
+		PreparedStatement stmt = conn.prepareStatement(delete,
+				Statement.RETURN_GENERATED_KEYS);
+		stmt.executeUpdate();
+		conn.close();
+	}
+
+	public void addDevice(String deviceID, int priority, boolean status) throws Exception {
+		if (checkEmpty(deviceID)) {
 			throw new IllegalArgumentException("deviceID Cannot be empty");
 		}
-    		Connection conn = ds.getConnection();
+		Connection conn = ds.getConnection();
 		String insert = "INSERT INTO devices(deviceID, updateTimestamp, priority, playing) VALUES(?, ?, ?, ?)";
 		PreparedStatement stmt = conn.prepareStatement(insert,
 				Statement.RETURN_GENERATED_KEYS);
@@ -89,15 +101,16 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 		stmt.setBoolean(4, status);
 		int affectedRows = stmt.executeUpdate();
 		if (affectedRows == 0) {
+			conn.close();
 			throw new SQLException("Creating project failed, no rows affected.");
 		}
 		conn.close();
-    }
-    
-    public void updateDevice(String deviceID, int priority, boolean status) throws Exception {
-    		Connection conn = ds.getConnection();
-    		
-    		String update = "UPDATE devices SET updateTimestamp = ?, priority = ?, playing = ? WHERE deviceID = ?";
+	}
+
+	public void updateDevice(String deviceID, int priority, boolean status) throws Exception {
+		Connection conn = ds.getConnection();
+
+		String update = "UPDATE devices SET updateTimestamp = ?, priority = ?, playing = ? WHERE deviceID = ?";
 		PreparedStatement stmt = conn.prepareStatement(update,
 				Statement.RETURN_GENERATED_KEYS);
 		Date time = new Date();
@@ -107,19 +120,20 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 		stmt.setString(4, deviceID);
 		int affectedRows = stmt.executeUpdate();
 		if (affectedRows == 0) {
+			conn.close();
 			throw new SQLException("Project Not Found");
 		}
 		conn.close();
-    }
-    
-    public String makeDecision() throws SQLException {
-    		String query = "select * from devices where playing=?";
+	}
+
+	public String makeDecision() throws SQLException {
+		String query = "select * from devices where playing=?";
 		Connection conn = ds.getConnection();
 		PreparedStatement s = conn.prepareStatement(query);
 		s.setBoolean(1, true);
 		ResultSet r = s.executeQuery();
 		ArrayList<Device> devices = new ArrayList<Device>();
-		
+
 		while (r.next()) {
 			devices.add(new Device(r.getString(1), r.getLong(2), r.getInt(3), r.getBoolean(4)));
 		}
@@ -127,25 +141,29 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 		if (devices.size() == 0) {
 			devices = analytics();
 			Collections.sort(devices);
+			conn.close();
 			return devices.get(devices.size()-1).getID();
 		}
+		conn.close();
 		return devices.get(0).getID();
-    }
-    
-    public Device getDevice(String deviceID) throws SQLException {
+	}
+
+	public Device getDevice(String deviceID) throws SQLException {
 		String query = "select * from devices where deviceID=?";
 		Connection conn = ds.getConnection();
 		PreparedStatement s = conn.prepareStatement(query);
 		s.setString(1, deviceID);
 		ResultSet r = s.executeQuery();		
 		if (!r.next()) {
+			conn.close();
 			throw new SQLException();
 		}
 		Device d = new Device(r.getString(1), r.getLong(2), r.getInt(3), r.getBoolean(4));
+		conn.close();
 		return d;
 	}
 
-	
+
 	public boolean checkEmpty(String string) {
 		if (string == null)
 			return true;
@@ -156,7 +174,7 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 		}
 		return true;
 	}
-	
+
 	public ArrayList<Device> analytics() throws SQLException {
 		String query = "select * from devices where priority=?";
 		Connection conn = ds.getConnection();
@@ -164,9 +182,10 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 		s.setInt(1, 0);
 		ResultSet r = s.executeQuery();		
 		ArrayList<Device> devices = new ArrayList<Device>();
-		while (r.next()) {
+		while (r != null && r.next()) {
 			devices.add(new Device(r.getString(1), r.getLong(2), r.getInt(3), r.getBoolean(4)));
 		}
+		conn.close();
 		return devices;
 	}
 }
