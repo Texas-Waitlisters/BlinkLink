@@ -10,6 +10,7 @@ from uuid import getnode as get_mac
 ipAddress =  sys.argv[1]
 mac = str(hex(get_mac()))
 print(mac)
+connected = false
 
 cmd = [ 'pmset', '-g']
 
@@ -40,6 +41,7 @@ def pingDatabase(isPlaying):
     return desiredMAC
 
 def pair(connected):
+    global connected
     while (not connected):
         os.system("blueutil on")
         print("Redtooth Activated")
@@ -53,6 +55,7 @@ def pair(connected):
 
 
 def Redtooth():
+    global connected
     priority = 2
     connected = False
     print("Running Core")
