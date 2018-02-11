@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.net.URI;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -108,20 +109,27 @@ public class RedtoothResource {
 		StringBuilder resultSB = new StringBuilder("<!DOCTYPE html>\n" + 
 				"<html style='padding:2%;'>\n" + 
 				"<head>\n" + 
-				"	<meta http-equiv=\"refresh\" content=\"2\">"
+				"	<meta http-equiv=\"refresh\" content=\"1\">"
+//				+ "<style type='text/css'>"
+//				+ "td, th { padding: 0px 5%; margin: 0px 15%; color:green;}"
+//				+ "</style>"
 				+ "</head><body><h1>Redtooth Analytics</h1>"
-				+ "<table><tr><th style='padding:0px 5px'>Device MAC Address</th><th style='padding:0px 5px'>Timestamp of Change</th><th style='padding:0px 5px'>Status</th></tr>");
+				+ "<table><tr><th style='padding:0px 5px'>Device MAC Address&nbsp&nbsp&nbsp&nbsp</th><th style='padding:0px 5px'>Updated&nbsp&nbsp&nbsp&nbsp&nbsp</th><th style='padding:0px 5px'>Status&nbsp</th></tr>");
 		for (Device d : devices) {
 			resultSB.append("<tr><td style='padding:0px 5px'>");
 			resultSB.append(d.getID());
 			resultSB.append("</td><td style='padding:0px 5px'>");
-			resultSB.append(d.getTimestamp());
+			Date date = new Date(d.getTimestamp());
+			resultSB.append(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
 			resultSB.append("</td ><td style='padding:0px 5px'>");
-			resultSB.append(d.getStatus());
+			if (d.getStatus())
+				resultSB.append("Playing");
 			resultSB.append("</td></tr>");
 		}
 		resultSB.append("</table><br>Chosen: ");
 		resultSB.append(this.databaseService.makeDecision());
+		resultSB.append("<br><br>");
+		resultSB.append("<a href=\"/redtooth/clear\" target=\"_blank\"><button>Reset DB</button></a> ");
 		resultSB.append("</body></html>");
 		return resultSB.toString();
 	}
