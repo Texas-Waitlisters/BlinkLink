@@ -21,6 +21,8 @@ public interface DeviceDBService {
     
     public ArrayList<Device> analytics() throws SQLException;
 
+	public void clearAll() throws Exception ;
+
 
     
 }

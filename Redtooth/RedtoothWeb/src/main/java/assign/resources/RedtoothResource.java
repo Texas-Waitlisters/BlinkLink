@@ -125,5 +125,12 @@ public class RedtoothResource {
 		resultSB.append("</body></html>");
 		return resultSB.toString();
 	}
+	
+	@GET
+	@Path("clear")
+	@Produces("text/html")
+	public void clearAll() throws Exception {
+		databaseService.clearAll();
+	}
 
 }
