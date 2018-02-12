@@ -8,7 +8,7 @@ tell application "System Events"
     set btMenu to (menu bar item 1 of menu bar 1 whose description contains "bluetooth")
     tell btMenu
       click
-      tell (menu item "MPOW" of menu 1)
+      tell (menu item "JBL Clip 2" of menu 1)
         click
         if exists menu item "Connect" of menu 1 then
           click menu item "Connect" of menu 1

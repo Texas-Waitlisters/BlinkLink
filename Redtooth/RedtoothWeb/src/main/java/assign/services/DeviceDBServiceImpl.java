@@ -138,7 +138,7 @@ public class DeviceDBServiceImpl implements DeviceDBService {
 			devices.add(new Device(r.getString(1), r.getLong(2), r.getInt(3), r.getBoolean(4)));
 		}
 		Collections.sort(devices);
-		if (devices.size() == 0) {
+		if (devices.size() == 0) { //TODO: Fix this so that an empty DB won't throw exception
 			devices = analytics();
 			Collections.sort(devices);
 			conn.close();
