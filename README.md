@@ -1,2 +1,2 @@
-# tamuhack
+# BlinkLink
 A tamuhack Project.
